@@ -14,3 +14,5 @@ namespace collision issues, it's the best we have.
 
 I included some "monkey patches" to provide some obvious operations that are
 not available by default or have objectionable behavior by default.
+
+Run the tests with `ruby -I. tests.rb`

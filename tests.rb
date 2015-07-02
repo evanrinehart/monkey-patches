@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require 'string_to_date'
+require 'object_tap_result'
 
 class Test < Minitest::Test
   def setup
@@ -22,14 +23,14 @@ class Test < Minitest::Test
     ]
   end
 
-  def test_decode_oks
+  def test_string_to_date_decode_oks
     @oks.each do |text, date|
       assert_equal text.to_date, date
       assert_equal text.to_date_nil, date
     end
   end
 
-  def test_error_on_bads
+  def test_string_to_date_error_on_bads
     @bads.each do |text|
       e = assert_raises(ArgumentError) do
         text.to_date
@@ -38,4 +39,9 @@ class Test < Minitest::Test
       assert_nil text.to_date_nil
     end
   end
+
+  def test_object_tap_result
+    assert_equal "abc".tap_result{|x| x.length}, 3
+  end
+
 end
