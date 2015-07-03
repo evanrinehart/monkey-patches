@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'string_to_date'
 require 'object_tap_result'
+require 'object_default'
 
 class Test < Minitest::Test
   def setup
@@ -42,6 +43,11 @@ class Test < Minitest::Test
 
   def test_object_tap_result
     assert_equal "abc".tap_result{|x| x.length}, 3
+  end
+
+  def test_object_default
+    assert_equal "abc".match(/d/).default(3), 3
+    assert_equal "abc"[/b/].default(3), "b"
   end
 
 end
